@@ -1,0 +1,11 @@
+quarkus:
+  datasource:
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/product
+    username: product_user
+    password: postgres
+  hibernate-orm:
+    database:
+      generation: none
+    log:
+      sql: true

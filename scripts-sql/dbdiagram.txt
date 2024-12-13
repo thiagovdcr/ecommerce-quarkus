@@ -1,0 +1,94 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table product {
+  id_product integer [pk, unique, increment]
+  name varchar
+  description varchar
+  price float
+  product_stock integer
+  id_product_category integer [ref: > product_category.id_product_category]
+  product_image varchar
+  created_at timestamp [default: `now()`]
+  update_at timestamp
+}
+
+Table product_category {
+  id_product_category integer [pk, unique, increment]
+  description varchar
+}
+
+Table customer {
+  id_customer integer [pk, unique, increment]
+  document_number varchar
+  email varchar
+  phone_number varchar
+  created_at timestamp [default: `now()`]
+  update_at timestamp
+}
+
+table customer_address {
+  id_customer_address integer [pk, unique, increment]
+  id_address integer [ref: - address.id_address]
+  id_customer integer [ref: > customer.id_customer]
+  created_at timestamp [default: `now()`]
+  update_at timestamp
+}
+
+Table user_profile {
+  id_user_profile integer [pk, unique, increment]
+  description varchar
+  value char(1)
+}
+
+Table customer_autentication {
+  id_customer_autentication integer [pk, unique, increment]
+  id_customer integer [ref: - customer.id_customer]
+  id_user_profile integer [ref: > user_profile.id_user_profile]
+  password varchar
+  created_at timestamp [default: `now()`]
+  update_at timestamp
+}
+
+Table address {
+  id_address integer [pk, unique, increment]
+  street_address varchar
+  id_city integer [ref: > city.id_city]
+  zip_code varchar
+  created_at timestamp [default: `now()`]
+  update_at timestamp
+}
+
+TABLE state {
+  id_state integer [pk, unique, increment]
+  uf_code integer
+  name    varchar(50)
+  uf      char(2)
+  region  integer
+}
+
+Table city {
+  id_city integer [pk, unique, increment]
+  id_state integer [ref: > state.id_state]
+  name varchar(255)
+}
+
+
+Table sale_order {
+  id_sale_order integer [pk, unique, increment]
+  id_costumer integer [ref: > customer.id_customer]
+  id_customer_address integer [ref: - customer_address.id_customer_address]
+  total_amount float
+  order_date timestamp [default: `now()`]
+  created_at timestamp [default: `now()`]
+  update_at timestamp [default: `now()`]
+}
+
+Table sale_order_item {
+  id_sale_order_item integer [pk, unique, increment]
+  id_sale_order integer [ref: > sale_order.id_sale_order]
+  id_product integer [ref: > product.id_product]
+  quantity integer
+  created_at timestamp [default: `now()`]
+  update_at timestamp [default: `now()`]
+}
