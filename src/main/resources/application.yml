@@ -10,7 +10,7 @@ quarkus:
     log:
       sql: true
 
-"%native":
+"%vagrant":
   quarkus:
     datasource:
       jdbc:
