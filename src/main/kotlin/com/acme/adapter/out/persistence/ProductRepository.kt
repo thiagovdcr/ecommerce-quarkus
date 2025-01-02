@@ -15,6 +15,11 @@ class ProductRepository: PanacheRepository<ProductPanacheEntity>, ProductReposit
     @Inject
     lateinit var productMapper: ProductMapper
 
+    override fun getAllProducts(): List<Product> {
+        val productsPanacheEntity = findAll().list<ProductPanacheEntity>()
+        return productsPanacheEntity.map { productMapper.mapToDomainEntity(it) }
+    }
+
     override fun getProduct(idProduct: Long): Product {
         val productPanacheEntity = find("idProduct", idProduct).firstResult<ProductPanacheEntity>()
         return productMapper.mapToDomainEntity(productPanacheEntity)

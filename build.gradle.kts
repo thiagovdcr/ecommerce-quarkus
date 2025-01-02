@@ -31,9 +31,9 @@ dependencies {
     implementation("io.quarkus:quarkus-panache-mock")
     implementation ("com.google.code.gson:gson:2.8.9")
 
-    implementation("io.quarkus:quarkus-kubernetes")
-    //implementation("io.quarkus:quarkus-container-image-docker")
-    implementation("io.quarkus:quarkus-container-image-jib")
+    //implementation("io.quarkus:quarkus-kubernetes")
+    implementation("io.quarkus:quarkus-container-image-docker")
+    //implementation("io.quarkus:quarkus-container-image-jib")
 
     testImplementation(kotlin("test"))
     testImplementation ("io.quarkus:quarkus-junit5")
@@ -62,7 +62,6 @@ tasks.quarkusBuild {
         "quarkus.native.builder-image" to "graalvm"
         "native-image-xmx" to "6g"
     }*/
-    print("QUARKUS BUILD NATIVE")
 }
 
 kotlin {

@@ -10,6 +10,10 @@ import jakarta.transaction.Transactional
 @Transactional
 class ProductService(private val productRepositoryPort: ProductRepositoryPort): ProductUseCase {
 
+    override fun getAllProducts(): List<Product> {
+        return productRepositoryPort.getAllProducts()
+    }
+
     override fun getProduct(idProduct: Long): Product {
         return productRepositoryPort.getProduct(idProduct)
     }

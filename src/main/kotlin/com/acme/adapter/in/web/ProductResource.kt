@@ -23,6 +23,13 @@ class ProductResource(private val productUseCase: ProductUseCase) {
         return productUseCase.getProduct(idProduct)
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/all-products")
+    fun getAllProducts(): List<Product> {
+        return productUseCase.getAllProducts()
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
