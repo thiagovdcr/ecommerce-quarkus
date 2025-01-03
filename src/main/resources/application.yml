@@ -1,7 +1,7 @@
 quarkus:
   datasource:
     jdbc:
-      url: jdbc:postgresql://localhost:5432/product
+      url: jdbc:postgresql://postgres-1.cpseq604e9xb.us-east-1.rds.amazonaws.com:5432/product
     username: product_user
     password: postgres
   hibernate-orm:
@@ -14,19 +14,19 @@ quarkus:
   quarkus:
     datasource:
       jdbc:
-        url: jdbc:postgresql://10.0.0.2:5432/product
+        url: jdbc:postgresql://postgres-1.cpseq604e9xb.us-east-1.rds.amazonaws.com:5432/product
       username: product_user
       password: postgres
     hibernate-orm:
       database:
         generation: none
-      log:
+      log: true
 
 "%native":
   quarkus:
     datasource:
       jdbc:
-        url: jdbc:postgresql://172.17.0.2:5432/product
+        url: jdbc:postgresql://postgres-1.cpseq604e9xb.us-east-1.rds.amazonaws.com:5432/product
       username: product_user
       password: postgres
     hibernate-orm:
