@@ -22,6 +22,20 @@ quarkus:
         generation: none
       log: 
         sql: true
+    container-image:
+      build: true
+      name: ecommerce-quarkus
+      group: thiagovdcr
+      username: thiagovdcr
+      registry: ghcr.io
+      push: true
+    kubernetes: 
+      generate-image-pull-secret: true
+      ports:
+        '"http"': 
+          container-port: 8080
+          host-port: 90
+      namespace: default
 
 "%native":
   quarkus:
