@@ -23,7 +23,7 @@ dependencies {
     implementation ("io.quarkus:quarkus-rest-jackson")
     implementation ("io.quarkus:quarkus-kotlin")
     implementation("io.quarkus:quarkus-hibernate-orm-panache")
-    implementation("io.quarkus:quarkus-jdbc-postgresql")
+    implementation("io.quarkus:quarkus-jdbc-mysql")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.21")
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-hibernate-orm")
@@ -31,9 +31,9 @@ dependencies {
     implementation("io.quarkus:quarkus-panache-mock")
     implementation ("com.google.code.gson:gson:2.8.9")
 
-    //implementation("io.quarkus:quarkus-kubernetes")
-    implementation("io.quarkus:quarkus-container-image-docker")
-    //implementation("io.quarkus:quarkus-container-image-jib")
+    implementation("io.quarkus:quarkus-kubernetes")
+    //implementation("io.quarkus:quarkus-container-image-docker")
+    implementation("io.quarkus:quarkus-container-image-jib")
 
     testImplementation(kotlin("test"))
     testImplementation ("io.quarkus:quarkus-junit5")
@@ -54,14 +54,6 @@ allOpen {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.quarkusBuild {
-    /*nativeArgs {
-        "container-build" to true
-        "quarkus.native.builder-image" to "graalvm"
-        "native-image-xmx" to "6g"
-    }*/
 }
 
 kotlin {

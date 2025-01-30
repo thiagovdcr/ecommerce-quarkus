@@ -1,9 +1,7 @@
--- Execute with postgres user
+CREATE USER 'product_user'@'%' IDENTIFIED BY 'mysql';
 
-CREATE ROLE product_user WITH LOGIN PASSWORD 'postgres';
+CREATE DATABASE IF NOT EXISTS product;
 
-CREATE DATABASE product WITH OWNER = product_user;
+GRANT ALL PRIVILEGES ON product.* TO 'product_user'@'%';
 
-ALTER ROLE product_user SET search_path TO product;
-
-GRANT CREATE ON DATABASE product TO product_user;
+FLUSH PRIVILEGES;

@@ -1,26 +1,28 @@
-quarkus:
-  datasource:
-    jdbc:
-      url: jdbc:postgresql://postgres-1.cpseq604e9xb.us-east-1.rds.amazonaws.com:5432/product
-    username: product_user
-    password: postgres
-  hibernate-orm:
-    database:
-      generation: none
-    log:
-      sql: true
+"%dev":
+  quarkus:
+    datasource:
+      db-kind: mysql
+      jdbc:
+        url: jdbc:mysql://localhost:3306/product
+      username: product_user
+      password: mysql
+    hibernate-orm:
+      database:
+        generation: none
+      log:
+        sql: true
 
 "%vagrant":
   quarkus:
     datasource:
       jdbc:
-        url: jdbc:postgresql://postgres-1.cpseq604e9xb.us-east-1.rds.amazonaws.com:5432/product
+        url: jdbc:mysql://localhost:3306/product
       username: product_user
-      password: postgres
+      password: mysql
     hibernate-orm:
       database:
         generation: none
-      log: 
+      log:
         sql: true
     container-image:
       build: true
@@ -29,10 +31,10 @@ quarkus:
       username: thiagovdcr
       registry: ghcr.io
       push: true
-    kubernetes: 
+    kubernetes:
       generate-image-pull-secret: true
       ports:
-        '"http"': 
+        '"http"':
           container-port: 8080
           host-port: 90
       namespace: default
